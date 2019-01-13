@@ -1,0 +1,45 @@
+Task 1
+
+1 Login into azure console.
+ Open cloud shell ( It has terraform installed and azure login setup with cli)
+
+2 excute below commands they will create the id information and display them on screen.
+# az ad sp create-for-rbac --query "{ client_id: appId, client_secret: password, tenant_id: tenant }"
+# az account show --query "{ subscription_id: id }"
+
+Please update those values in main.tf in provider coloumn
+
+3 Now create a file on cloud shell with name main.tf and append the data in it.
+4 Run below command get provider installed 
+  terraform init .
+5 Run below command to apply the changes 
+  terraform apply .
+  it will take time and if prompts enter yes for it. after some time it will create the resource.
+
+
+
+Task 2
+
+It will work on linux os only. please copy stats.sh into created machine and run it.
+This is output of stats.sh
+mohammad@mohammad-Vostro-15-3568:~/Desktop/20190111/Assignment1$ bash stats.sh 
+Memory Usage: 1890/7852MB (24.07%)
+CPU Load: 3.16
+Disk Usage: 75/898GB (9%)
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda3       898G   75G  778G   9% /
+/dev/sda1       596M   24M  573M   4% /boot/efi
+
+ Network Usage 
+ Kernel Interface table
+Iface   MTU Met   RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
+br-4d40def0dc10  1500 0         0      0      0 0             0      0      0      0 BMU
+docker0    1500 0         0      0      0 0             0      0      0      0 BMU
+enp2s0     1500 0         0      0      0 0             0      0      0      0 BMU
+lo        65536 0      1402      0      0 0          1402      0      0      0 LRU
+wlp1s0     1500 0    120423      0      0 0        123640      0      0      0 BMRU
+mohammad@mohammad-Vostro-15-3568:~/Desktop/20190111/Assignment1$ 
+
+
+
+

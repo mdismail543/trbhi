@@ -1,0 +1,20 @@
+Troubleshooting process :
+
+Once I have logged into windows machine, I have try load the url but i got 503 service unavailable. 
+This is an error indicating service has issue with starting. Then I checked the event logs  I see the below error. 
+"Windows Process Activation Service (WAS) encountered a failure when it started a worker process to serve the application pool"
+
+then I try to start it but unable to do so. After checking sometime the defaultpool identity is not correct I have changed it and restarted it,
+It started working 
+
+
+Whats wrong:
+
+application pool is running under a specific identity, which cause the issue 
+
+
+How fixed it:
+
+In IIS, go to Application Pools, and check the Identity of your Application Pool.
+I Try changing the Identify to a Built-in account like ApplicationPoolIndentity. To do this, go to Advanced Settings, Process Model, Identity. 
+Restarted the App Pool after making changes. I am able load the page

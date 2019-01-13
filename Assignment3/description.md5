@@ -1,0 +1,41 @@
+Troubleshooting process :
+
+I have check the process with ps -ef|grep redis command, I see the process is running. 
+Then i have check the /etc/redis/redis.conf file it seems to be good. 
+Then i check the status it show redis is running.
+ Then i have restarted the redis with service command and it started well and status also good. 
+ I have did some health check and it shows the correct output
+
+Whats wrong:
+
+Nothing is wrong
+
+How fixed it:
+
+I did nothing just restarted the service and did basic health check
+
+
+root@candidate04lnx:/tmp# sudo systemctl status redis
+● redis.service - Redis In-Memory Data Store
+   Loaded: loaded (/etc/systemd/system/redis.service; enabled; vendor preset: enabled)
+   Active: active (running) since Fri 2019-01-11 17:56:11 UTC; 28s ago
+  Process: 31718 ExecStop=/usr/local/bin/redis-cli shutdown (code=exited, status=0/SUCCESS)
+ Main PID: 31725 (redis-server)
+    Tasks: 4
+   Memory: 8.6M
+      CPU: 24ms
+   CGroup: /system.slice/redis.service
+           └─31725 /usr/local/bin/redis-server 127.0.0.1:6379  
+
+Validating using redis cli and here is the output.
+root@candidate04lnx:~# redis-cli
+127.0.0.1:6379> ping
+PONG
+127.0.0.1:6379> info
+# Server
+redis_version:5.0.3
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_build_id:d642be6b19866c03
+redis_mode:standalone
+ 
